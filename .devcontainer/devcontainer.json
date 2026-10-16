@@ -1,6 +1,6 @@
 {
     "name": "DAWS Development Container",
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+    "image": "mcr.microsoft.com/devcontainers/base:bookworm",
     "features": {
         "ghcr.io/dlouwers/devcontainer-features/devbox:1": {},
         "ghcr.io/devcontainers/features/docker-in-docker:4": {}
