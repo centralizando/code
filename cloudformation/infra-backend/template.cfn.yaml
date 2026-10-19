@@ -1,0 +1,21 @@
+# aws cloudformation create-stack --stack-name infra-backend --template-body file://template.cfn.yaml
+# aws cloudformation delete-stack --stack-name infra-backend --region us-east-1
+Resources:
+  InfraBackendBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: gabriel-infra-bucket-2026 # Must be a unique name
+      PublicAccessBlockConfiguration:
+        BlockPublicPolicy: false
+        RestrictPublicBuckets: false
+
+  InfraBackendBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref InfraBackendBucket
+      PolicyDocument:
+        Statement:
+          - Effect: Allow
+            Principal: "*"
+            Action: "s3:GetObject"
+            Resource: !Sub "${InfraBackendBucket.Arn}/*"
